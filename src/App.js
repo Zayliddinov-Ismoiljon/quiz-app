@@ -12,8 +12,9 @@ function App() {
   return (
     <>
       <div className="container p-5">
-      { !isStart ? <Home setCategoryId={setCategoryId} categoryId={categoryId} setIsStart={setIsStart} /> : null}
-      { isStart ? <TestContainer categoryId={categoryId} /> : null} 
+      { !isStart ? <Home setCategoryId={setCategoryId} categoryId={categoryId} setIsStart={setIsStart} />
+       :  <TestContainer categoryId={categoryId} setIsStart={setIsStart} />
+       } 
       </div>
     </>
   );

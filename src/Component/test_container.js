@@ -63,7 +63,7 @@ const TestContainer = ({ categoryId, setIsStart }) => {
 	console.log(checkStore);
 	return (
 		<Spin spinning={loading} tip='Loading 😴 ...'>
-			{ isSubmit ? <Button type='primary' size='large' onClick={() => setIsStart(false)} > Try again </Button> : null}
+			{ isSubmit ? <Button className='mb-5' type='primary' size='large' onClick={() => setIsStart(false)} > Try again </Button> : null}
 			<div className='d-flex flex-wrap aligin-items-center justify-content-center mb-4'>
 				{data?.length ? data?.map((e, i) => (
 							<Button

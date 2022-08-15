@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {Select, Button} from "antd"
 
 const {Option} = Select;
+
 export default function Home({setCategoryId, categoryId, setIsStart}) {
 
     const [category, setCategory]= useState([]);
@@ -25,7 +26,7 @@ export default function Home({setCategoryId, categoryId, setIsStart}) {
     <div className='w-75 mx-auto'>
         <div className="mb-4">
           <h3 className='text-center mb-4'>Select Category</h3>
-        <Select allowClear loading={loading} className='mx-auto w-100'size='large' onChange={ (e) => setCategoryId(e)} >
+        <Select allowClear loading={loading} className='mx-auto w-100' size='large' onChange={ (e) => setCategoryId(e)} >
             {
                 category?.map((e,i)=>(
                           <Option value={e?.id} key={i}>{e?.name}</Option>

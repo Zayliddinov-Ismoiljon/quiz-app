@@ -43,6 +43,7 @@ export default function Answer({ data, checker, setChecker, idx, isSubmit }) {
 			}
 		});
 
+		console.log(newArr);
 		setChecker(newArr);
 	}
 
@@ -61,18 +62,17 @@ export default function Answer({ data, checker, setChecker, idx, isSubmit }) {
 			{answer.map((e, i) => (
 				<Card.Grid
 					key={i}
-					block
 					hoverable={false}
-					// type={isActive === i ? 'primary' : 'default'}
+					type={isActive === i ? 'primary' : 'default'}
 					size='large'
 					className={`shadow-hover rounded my-2 py-3 w-100 cursor-pointer `}
 					style={{
 						// backgroundColor: `${e.isCorrect == 1 ? '#8bbb11' : '#e84749'}`,
-						backgroundColor: `${checker[idx]?.clickInx === i && getCheckSelect()}`,
+						backgroundColor: `${checker[idx]?.clickInx === i ? getCheckSelect() : ''}`,
 					}}
 					onClick={() => {
+						getArrayChecker(i, e?.isCorrect)
 						setIsActive(i);
-						getArrayChecker(i,e?.isCorrect)
 					}}>
 					{e?.answer}
 				</Card.Grid>

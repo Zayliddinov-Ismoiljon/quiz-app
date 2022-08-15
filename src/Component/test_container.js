@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect } from 'react';
 import { Button, Spin, Card } from 'antd';
 import Answer from './Answer';
 
-const TestContainer = ({ categoryId }) => {
+const TestContainer = ({ categoryId, setIsStart }) => {
 	const [data, setData] = useState([]);
 	const [currentPage, setCurrentPage] = useState(0);
 	const [loading, setLoading] = useState(false);
@@ -35,10 +35,6 @@ const TestContainer = ({ categoryId }) => {
 		setCheckStore([...arr]);
 	}
 
-	const handleSubmit = () => {
-
-	}
-
 	function randomArray(array) {
 		var currentIndex = array.length,
 			randomIndex;
@@ -67,9 +63,9 @@ const TestContainer = ({ categoryId }) => {
 	console.log(checkStore);
 	return (
 		<Spin spinning={loading} tip='Loading 😴 ...'>
+			{ isSubmit ? <Button type='primary' size='large' onClick={() => setIsStart(false)} > Try again </Button> : null}
 			<div className='d-flex flex-wrap aligin-items-center justify-content-center mb-4'>
-				{data?.length
-					? data?.map((e, i) => (
+				{data?.length ? data?.map((e, i) => (
 							<Button
 								size='large'
 								type={currentPage === i ? 'primary' : 'default'}
@@ -78,12 +74,10 @@ const TestContainer = ({ categoryId }) => {
 								onClick={() => setCurrentPage(i)}>
 								{i + 1}
 							</Button>
-					  ))
-					: null}
+					  )) : null}
 			</div>
 
-			{data?.length
-				? data?.map((e, i) =>
+			{data?.length ? data?.map((e, i) =>
 						currentPage === i ? (
 							<>
 								<Card
@@ -103,8 +97,7 @@ const TestContainer = ({ categoryId }) => {
 								</Card>
 							</>
 						) : null,
-				  )
-				: null}
+				  ) : null}
 		</Spin>
 	);
 };
